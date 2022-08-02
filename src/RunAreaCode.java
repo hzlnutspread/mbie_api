@@ -1,4 +1,5 @@
 import com.google.gson.Gson;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
@@ -16,7 +17,7 @@ public class RunAreaCode {
         String[] propertiesData = getPropertiesData();
 
         // -------------------------------------- First API request --------------------------------------
-        ArrayList<String> areaCodes =  getAreaCodes(propertiesData[0], propertiesData[2], propertiesData[1]);
+        ArrayList<String> areaCodes = getAreaCodes(propertiesData[0], propertiesData[2], propertiesData[1]);
 
         // -------------------------------------- Second API request --------------------------------------
         getAreaCodeData(propertiesData[0], propertiesData[2], areaCodes, propertiesData[1]);

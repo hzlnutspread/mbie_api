@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.util.Properties;
 
 
-public class RunStatistics {
+public class RunStatisticsMonthly {
     public static void main(String[] args) throws Exception {
 
         // -------------------------------------- Load Properties File --------------------------------------

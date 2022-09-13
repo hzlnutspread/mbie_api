@@ -33,7 +33,6 @@ public class RunStatisticsQuarterly implements GetCsvOutput {
                 "Invercargill City", "ALL"};
 
         String pathName = "quarterly_data.csv";
-
         File csvFile = new File(pathName);
         PrintWriter pwOut = new PrintWriter(csvFile);
         for (String region : regionList) {

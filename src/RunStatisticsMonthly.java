@@ -22,14 +22,23 @@ public class RunStatisticsMonthly implements GetCsvOutput {
 
     @Override
     public void createCsv(Data data) throws IOException {
-        String pathName = "monthly_data.csv";
 
+        String[] regionList = {"Northland Region", "Auckland Region", "Waikato Region", "Bay of Plenty Region",
+                "Gisborne Region", "Hawke's Bay Region", "Taranaki Region", "Manawatu-Wanganui Region",
+                "Wellington Region", "West Coast Region", "Tasman Region", "Nelson Region", "Marlborough Region",
+                "Canterbury Region", "Otago Region", "Southland Region", "ALL"};
+
+        String pathName = "monthly_data.csv";
         File csvFile = new File(pathName);
-        FileWriter fwOut = new FileWriter(csvFile, true);
-        PrintWriter pwOut = new PrintWriter(fwOut);
-        for (Item statsItem : data.getItems()) {
-            if (Objects.equals(statsItem.dwell, "ALL") & Objects.equals(statsItem.nBedrms, "ALL")) {
-                pwOut.printf("%s, %d, %d\n", statsItem.area, statsItem.med, statsItem.nLodged);
+        PrintWriter pwOut = new PrintWriter(csvFile);
+        for (String region : regionList) {
+            System.out.println(region);
+            for (Item statsItem : data.getItems()) {
+                if (statsItem.area.equals(region) & Objects.equals(statsItem.dwell, "ALL") & Objects.equals(statsItem.nBedrms, "ALL")) {
+                    System.out.printf("%d, %d,", statsItem.nLodged, statsItem.med);
+                    pwOut.printf("%d, %d,", statsItem.nLodged, statsItem.med);
+                }
+
             }
         }
         pwOut.close();

@@ -17,7 +17,6 @@ public class RunStatisticsMonthly implements GetCsvOutput {
 
         // -------------------------------------- Write to CSV --------------------------------------
         createCsv(data);
-
     }
 
     @Override
@@ -38,7 +37,6 @@ public class RunStatisticsMonthly implements GetCsvOutput {
                     System.out.printf("%d, %d,", statsItem.nLodged, statsItem.med);
                     pwOut.printf("%d, %d,", statsItem.nLodged, statsItem.med);
                 }
-
             }
         }
         pwOut.close();

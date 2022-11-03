@@ -1,5 +1,4 @@
 import com.google.gson.Gson;
-
 import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -51,6 +50,21 @@ public abstract class Utils {
         HttpClient httpClientThree = HttpClient.newHttpClient();
         HttpRequest getRequestThree = HttpRequest.newBuilder()
                 .uri(new URI(url + statsPath + "?period-ending=2022-06&num-months=3&area-definition=TA2019&include-aggregates=true"))
+                .header("Authorization", "Bearer " + token)
+                .header("Accept", "application/json")
+                .build();
+        HttpResponse<String> getResponseThree = httpClientThree.send(getRequestThree, HttpResponse.BodyHandlers.ofString());
+
+        Gson gson = new Gson();
+        Data data = gson.fromJson(getResponseThree.body(), Data.class);
+
+        return data;
+    }
+
+    public static Data runQuarterlyAucklandRequest(String url, String statsPath, String token) throws IOException, InterruptedException, URISyntaxException {
+        HttpClient httpClientThree = HttpClient.newHttpClient();
+        HttpRequest getRequestThree = HttpRequest.newBuilder()
+                .uri(new URI(url + statsPath + "?period-ending=2022-06&num-months=3&area-definition=WARD2019&include-aggregates=true"))
                 .header("Authorization", "Bearer " + token)
                 .header("Accept", "application/json")
                 .build();

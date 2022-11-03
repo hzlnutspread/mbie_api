@@ -17,8 +17,6 @@ public class RunStatisticsQuarterly implements GetCsvOutput {
 
         // -------------------------------------- Write to CSV --------------------------------------
         createCsv(data);
-
-
     }
 
     @Override
@@ -58,13 +56,6 @@ public class RunStatisticsQuarterly implements GetCsvOutput {
                 }
             }
         }
-
-//        for (Item statsItem : data.getItems()) {
-//            if (statsItem.area.equals("ALL")) {
-//                pwOut.printf("%d, %d,", statsItem.nLodged, statsItem.med);
-//
-//            }
-//        }
         pwOut.close();
     }
 }

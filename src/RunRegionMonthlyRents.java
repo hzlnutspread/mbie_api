@@ -1,11 +1,10 @@
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.util.Objects;
 
-public class RunStatisticsMonthly implements GetCsvOutput {
+public class RunRegionMonthlyRents implements GetCsvOutput {
     public void getMonthlyData() throws IOException, URISyntaxException, InterruptedException {
 
         // -------------------------------------- Load Properties File --------------------------------------
@@ -27,7 +26,7 @@ public class RunStatisticsMonthly implements GetCsvOutput {
                 "Wellington Region", "West Coast Region", "Tasman Region", "Nelson Region", "Marlborough Region",
                 "Canterbury Region", "Otago Region", "Southland Region", "ALL"};
 
-        String pathName = "monthly_data.csv";
+        String pathName = "region_monthly_rents.csv";
         File csvFile = new File(pathName);
         PrintWriter pwOut = new PrintWriter(csvFile);
         for (String region : regionList) {
@@ -37,14 +36,9 @@ public class RunStatisticsMonthly implements GetCsvOutput {
                     System.out.printf("%d, %d,", statsItem.nLodged, statsItem.med);
                     pwOut.printf("%d, %d,", statsItem.nLodged, statsItem.med);
                 }
+
             }
         }
         pwOut.close();
     }
 }
-
-
-
-
-
-
